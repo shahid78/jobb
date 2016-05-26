@@ -59,7 +59,7 @@ public class KontonummerSjekk {
 
 	/**
 	* Metode for sjekk av et gitt kontonummer vha modulus11. 
-	* Resultatet sett som et boolean verdi på kontoobjektet 
+	* Resultatet settes som et boolean verdi på kontoobjektet 
 	* @param konto Et vilkårlig objekt
 	*/
 	public void sjekkGyldighet(Konto konto)
