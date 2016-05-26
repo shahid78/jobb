@@ -27,11 +27,9 @@ public class KontonummerSjekk {
 	*/
 	public void definerKontrollSiffer(Konto konto) {
 		String kontonummer = konto.getKontoNummer();
+		char sisteSiffer = kontonummer.charAt(kontonummer.length() - 1);
+		konto.setKontrollSiffer(Character.getNumericValue(sisteSiffer));		
 		
-		
-		konto.setKontrollSiffer(Character.getNumericValue(kontonummer.charAt(kontonummer.length() - 1)));		
-		
-		System.out.println("#setKontrollSiffer: " + konto.getKontrollSiffer());
 	}
 
 	/***
@@ -56,7 +54,6 @@ public class KontonummerSjekk {
 		formatertKontoNummerReversert= new StringBuilder(kNummerUtenSkilletegnOgKSiffer).reverse().toString();
 
 		konto.setFormatertKontoNummer(formatertKontoNummerReversert) ;
-		System.out.println("#formatertKontoNummer: " + konto.getFormatertKontoNummer());
 		
 	}
 
@@ -94,21 +91,16 @@ public class KontonummerSjekk {
 				break;
 			default:
 				kontrollSiffer = DIVISOR-rest;
-			}
+		}
 			
-		System.out.println("#kontrollsiffer " + kontrollSiffer);
-		System.out.println("#konto-kontrollsiffer " + konto.getKontrollSiffer());
-
 		if(kontrollSiffer==konto.getKontrollSiffer())
 			konto.setGyldigKontoNummer(true);
 		else 
 			konto.setGyldigKontoNummer(false);
-	
-		System.out.println(konto.isGyldigKontoNummer());
 	}
 
 	public static void main(String[] args) {
-		Konto konto = new Konto("klppkppkpk");
+		Konto konto = new Konto("1504.82.17882");
 		KontonummerSjekk kontonummerSjekk = new KontonummerSjekk(konto);
 		kontonummerSjekk.definerKontrollSiffer(konto);
 		kontonummerSjekk.formaterKontoNummer(konto);		
