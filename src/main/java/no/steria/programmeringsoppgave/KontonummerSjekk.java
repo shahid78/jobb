@@ -57,11 +57,11 @@ public class KontonummerSjekk {
 	}
 
 	/**
-	 * Metode for sjekk av et gitt kontonummer vha modulus11. Resultatet settes
-	 * som et boolean verdi på kontoobjektet
+	 * Metode for validering av et gitt kontonummer vha modulus11 metodikk.
 	 * 
-	 * @param konto
-	 *            Et vilkårlig objekt
+	 * Resultatet av valideringen settes som et boolean verdi på kontoobjektet
+	 * 
+	 * @param konto Et vilkårlig konto objekt
 	 */
 	public void sjekkGyldighet(Konto konto) {
 		int totalSum = 0;
@@ -70,16 +70,16 @@ public class KontonummerSjekk {
 
 		String kontoNummerFormatert = konto.getFormatertKontoNummer();
 		int kontoNummerLengde = kontoNummerFormatert.length();
-
 		int sifferIKontoNummer[] = new int[kontoNummerLengde];
 
 		for (int i = 0; i < kontoNummerLengde; i++)
 			sifferIKontoNummer[i] = Character.getNumericValue(kontoNummerFormatert.charAt(i));
-
+		
 		for (int i = 0; i < sifferIKontoNummer.length; i++)
 			totalSum += (sifferIKontoNummer[i] * VEKTTALL[i]);
 
 		rest = totalSum % DIVISOR;
+		
 		switch (rest) {
 		case 0:
 			kontrollSiffer = 0;
