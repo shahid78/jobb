@@ -3,7 +3,7 @@
  * 
  */
 
-package no.steria.programmeringsoppgave;
+package no.java.programmeringsoppgave;
 
 import static org.junit.Assert.*;
 

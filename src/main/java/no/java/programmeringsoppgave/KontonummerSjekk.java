@@ -3,7 +3,7 @@
  * 
  */
 
-package no.steria.programmeringsoppgave;
+package no.java.programmeringsoppgave;
 
 public class KontonummerSjekk {
 
@@ -72,12 +72,25 @@ public class KontonummerSjekk {
 		int kontoNummerLengde = kontoNummerFormatert.length();
 		int sifferIKontoNummer[] = new int[kontoNummerLengde];
 
+		// Lager en tall-array basert på sifrene i det formaterte kontonummeret
 		for (int i = 0; i < kontoNummerLengde; i++)
 			sifferIKontoNummer[i] = Character.getNumericValue(kontoNummerFormatert.charAt(i));
 		
+		/**
+		 *  Sifre i tall-arryet multlipliseres henholdsvis med sifre i vektallssamlingen
+		 *  Delproduktene legges sammen til en totalsum
+		 */
 		for (int i = 0; i < sifferIKontoNummer.length; i++)
 			totalSum += (sifferIKontoNummer[i] * VEKTTALL[i]);
 
+		/**
+		 * Totalsummen deles med 11 slik at vi får en restverdi som vi vil evaluere videre.
+		 * 
+		 * Dersom restverdien er 1 vil tallet forkastes, ved at kontrollsiffer settes til -1.
+		 * Hvis restverdien er 0, settes kontrollsiffer til denne verdien.
+		 * For andre verdier for rest, vil verdien til kontrollsiffer settes etter formelen: 11 - restverdi.
+		 * 
+		 */
 		rest = totalSum % DIVISOR;
 		
 		switch (rest) {
@@ -91,15 +104,28 @@ public class KontonummerSjekk {
 			kontrollSiffer = DIVISOR - rest;
 		}
 
-		if (kontrollSiffer == konto.getKontrollSiffer())
+		/**
+		 * Kontonummeret vil være gyldig dersom kontrollsifferet beregnet ovenfor 
+		 * samsvarer med kontrollsiffer i kontonummeret. 
+		 */
+		if (kontrollSiffer == konto.getKontrollSiffer()) 
 			konto.setGyldigKontoNummer(true);
-		else
+		else 
 			konto.setGyldigKontoNummer(false);
+			
+		System.out.println("Kontonummer: "+  konto.getKontoNummer() + "\n isGyldig: " + konto.isGyldigKontoNummer());
 	}
 
-
-	public static void main(String[] args) {
-		Konto konto = new Konto("1504.82.17882");
+    /***
+     * Main metode for å testkjøre programmet med et 11-sifret nummer
+     * @param args
+     */
+	public static void main(String[] args) {	
+		Konto konto;
+		
+		if (args.length !=0) konto = new Konto(args[0]);	
+		else konto	= new Konto("0540.46.02227");
+		
 		KontonummerSjekk kontonummerSjekk = new KontonummerSjekk(konto);
 		kontonummerSjekk.definerKontrollSiffer(konto);
 		kontonummerSjekk.formaterKontoNummer(konto);

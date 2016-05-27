@@ -2,7 +2,7 @@
  * @author Shahid Idrees
  * 
  */
-package no.steria.programmeringsoppgave;
+package no.java.programmeringsoppgave;
 
 public class Konto {
 
