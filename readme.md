@@ -7,6 +7,7 @@ Valideringen gjøres vha modulus11 metodikk.
 
 Bygges/kjøres lokalt med maven. Kontonummer som ønskes testes, sendes som et maven parameter (se eksempel under)
 > mvn clean install
+
 > mvn exec:java -Dexec.mainClass="no.java.programmeringsoppgave.KontonummerSjekk" -Dexec.args="0540.46.02227"
 
 ## IDE
