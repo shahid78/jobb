@@ -29,7 +29,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>no.java.programmeringsoppgave.KontonummerSjekk</mainClass>
+					<mainClass>no.java.programmeringsoppgave.service.KontonummerSjekk</mainClass>
 					<arguments>
 						<argument>0540.46.02227</argument>
 					</arguments>

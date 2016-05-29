@@ -8,7 +8,7 @@ Valideringen gjøres vha modulus11 metodikk.
 Bygges/kjøres lokalt med maven. Kontonummer som ønskes testes, sendes som et maven parameter (se eksempel under)
 > mvn clean install
 
-> mvn exec:java -Dexec.mainClass="no.java.programmeringsoppgave. KontonummerSjekk" -Dexec.args="0540.46.02227"
+> mvn exec:java -Dexec.mainClass="no.java.programmeringsoppgave.service.KontonummerSjekk" -Dexec.args="0540.46.02227"
 
 Kontonummeret tastes inn med tallverdier, på formen "nnnn.nn.nnnnn". 
 
@@ -21,4 +21,4 @@ Javadoc er generert i eclipse, og vedlagt i prosjektet
 ## Tester
 
 Prosjektet består av 4 JUnit tester. Disse kan kjøres eksplisit med maven;
->  mvn  -Dtest=no.java.programmeringsoppgave.KontonummerSjekkTest test 
+>  mvn  -Dtest=no.java.programmeringsoppgave.service.KontonummerSjekkTest test 
